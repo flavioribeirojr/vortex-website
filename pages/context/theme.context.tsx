@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 
 const lightTheme = {
     strongText: 'black',
-    text: 'black',
+    text: '#515151',
     background: 'white',
     primary: '#E51199'
 };

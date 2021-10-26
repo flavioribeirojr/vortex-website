@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styled, { css } from 'styled-components';
+import { Banner } from '../page-components/home/Banner';
 import { Header } from '../page-components/home/Header';
 
 const Home: NextPage = () => {
@@ -13,6 +14,9 @@ const Home: NextPage = () => {
       </Head>
       <Container>
         <Header />
+        <main>
+          <Banner />
+        </main>
       </Container>
     </>
   );
@@ -27,4 +31,8 @@ const Container = styled.div`
     background-color: ${props.theme.background};
     transition: background-color .3s linear;
   `};
+
+  @media(max-width: 940px) {
+    padding: 0;
+  }
 `;
