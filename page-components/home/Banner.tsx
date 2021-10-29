@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 import BannerImageFile from '../../public/img/creative_solutions.png';
+import { Breakpoints } from '../../styles/breakpoints';
 
 export function Banner() {
     return (
@@ -28,9 +29,9 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
-    height: 90vh;
+    height: calc(100vh - 95px);
 
-    @media(max-width: 940px) {
+    @media screen and ${Breakpoints.xs} {
         align-items: flex-start;
         flex-direction: column;
         height: calc(100vh - 100px);
@@ -40,7 +41,7 @@ const Container = styled.div`
 const BannerImage = styled.img`
     width: 40%;
 
-    @media(max-width: 940px) {
+    @media screen and ${Breakpoints.xs} {
         display: block;
         width: auto;
         margin: auto;
@@ -52,7 +53,7 @@ const BannerInfo = styled.div`
     flex-grow: 1;
     padding-left: 160px;
 
-    @media(max-width: 940px) {
+    @media screen and ${Breakpoints.xs} {
         padding: 0 15px;
         display: flex;
         flex-grow: 0;

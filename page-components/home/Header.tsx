@@ -4,6 +4,7 @@ import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 import { useThemeContext } from '../../pages/context/theme.context';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
+import { Breakpoints } from '../../styles/breakpoints';
 
 export function Header() {
     const themeContext = useThemeContext();
@@ -75,7 +76,15 @@ const HeaderContainer = styled.header`
     width: 100%;
     padding: 14px 0;
 
-    @media(max-width: 940px) {
+    ${(props: { isScrolled?: boolean }) => props.isScrolled && css`
+        position: fixed;
+        left: 0;
+        padding: 14px 100px;
+        background: ${props => props.theme.background};
+        box-shadow: 0 1px 5px ${props => props.theme.boxShadow};
+    `}
+
+    @media screen and ${Breakpoints.xs} {
         padding: 15px;
         padding-bottom: 0;
     }
@@ -85,7 +94,7 @@ const LogoImage = styled.img`
     height: 65px;
     object-fit: contain;
 
-    @media(max-width: 940px) {
+    @media screen and ${Breakpoints.xs} {
         height: 55px;
     }
 `;
@@ -95,7 +104,7 @@ const HeaderRightContainer = styled.div`
     display: flex;
     align-items: center;
 
-    @media(max-width: 940px) {
+    @media screen and ${Breakpoints.xs} {
         width: 100vw;
         transform: translateX(100vw);
         transition: transform .3s linear;
@@ -122,7 +131,7 @@ const HeaderSidebarLogo = styled.img`
     object-fit: contain;
     display: none;
 
-    @media(max-width: 940px) {
+    @media screen and ${Breakpoints.xs} {
         display: block;
     }
 `;
@@ -132,7 +141,7 @@ const NavBar = styled.nav`
     align-items: center;
     height: 100%;
 
-    @media(max-width: 940px) {
+    @media screen and ${Breakpoints.xs} {
         flex-direction: column;
         height: auto;
     }
@@ -146,7 +155,7 @@ const NavLink = styled.a`
     color: ${props => props.theme.strongText};
     font-weight: 700;
 
-    @media(max-width: 940px) {
+    @media screen and ${Breakpoints.xs} {
         padding: 20px 0;
     }
 `;
@@ -156,7 +165,7 @@ const ThemeSwitcher = styled.div`
     align-items: center;
     margin-left: 50px;
 
-    @media(max-width: 940px) {
+    @media screen and ${Breakpoints.xs} {
         margin: 0 auto;
         margin-top: auto;
     }
@@ -193,7 +202,7 @@ const TheSwitcherToggle = styled.div`
         border-color: ${props => props.theme.primary};
     }
 
-    @media(max-width: 940px) {
+    @media screen and ${Breakpoints.xs} {
         font-size: 18px;
     }
 `;
@@ -205,7 +214,7 @@ const SideBarToggler = styled.button`
     cursor: pointer;
     display: none;
 
-    @media(max-width: 940px) {
+    @media screen and ${Breakpoints.xs} {
         display: block;
     }
 `;
@@ -224,7 +233,7 @@ const SidebarClose = styled.button`
     right: 10px;
     display: none;
 
-    @media(max-width: 940px) {
+    @media screen and ${Breakpoints.xs} {
         display: block;
     }
 `;

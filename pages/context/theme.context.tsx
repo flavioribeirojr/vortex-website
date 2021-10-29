@@ -6,14 +6,18 @@ const lightTheme = {
     strongText: 'black',
     text: '#515151',
     background: 'white',
-    primary: '#E51199'
+    primary: '#E51199',
+    secondary: '#6fe784',
+    boxShadow: '#b7b7b799'
 };
 
 const darkTheme = {
     strongText: 'white',
     text: '#E3E3E3',
     background: '#241D34',
-    primary: '#E51199'
+    primary: '#E51199',
+    secondary: '#6fe784',
+    boxShadow: '#101010cf'
 };
 
 const ThemeContext = React.createContext<ThemeState>({

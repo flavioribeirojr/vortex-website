@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styled, { css } from 'styled-components';
+import { About } from '../page-components/home/About';
 import { Banner } from '../page-components/home/Banner';
 import { Header } from '../page-components/home/Header';
 
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
         <Header />
         <main>
           <Banner />
+          <About />
         </main>
       </Container>
     </>
