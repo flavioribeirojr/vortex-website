@@ -5,6 +5,11 @@ body {
   font-family: 'Nunito', sans-serif;
 }
 
+textarea,
+button {
+  font-family: 'Nunito', sans-serif;
+}
+
 a {
   color: inherit;
   text-decoration: none;

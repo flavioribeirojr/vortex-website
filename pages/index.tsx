@@ -3,6 +3,7 @@ import Head from 'next/head';
 import styled, { css } from 'styled-components';
 import { About } from '../page-components/home/About';
 import { Banner } from '../page-components/home/Banner';
+import { Contact } from '../page-components/home/Contact';
 import { Header } from '../page-components/home/Header';
 
 const Home: NextPage = () => {
@@ -18,6 +19,7 @@ const Home: NextPage = () => {
         <main>
           <Banner />
           <About />
+          <Contact />
         </main>
       </Container>
     </>

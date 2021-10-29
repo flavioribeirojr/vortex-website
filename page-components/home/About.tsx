@@ -75,7 +75,7 @@ const Title = styled.h3`
     display: inline-block;
     margin: 0 auto;
     position: relative;
-    color: ${props => props.theme.text};
+    color: ${props => props.theme.strongText};
     margin-bottom: 40px;
 
     &::before {
@@ -94,6 +94,10 @@ const AbouItem = styled.article`
     grid-template-columns: 1fr 1fr;
     column-gap: 40px;
     margin-bottom: 40px;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
 
     @media screen and ${Breakpoints.xs} {
         display: flex;
