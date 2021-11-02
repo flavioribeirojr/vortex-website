@@ -146,7 +146,8 @@ const AboutItemInfoContactLink = styled.a`
     font-weight: 700;
     margin-top: 35px;
     padding: 15px 40px;
-    border-radius: 4px;
+    box-shadow: 0px 8px 25px rgb(22 227 18 / 54%);
+    border-radius: 90px;
 
     @media screen and ${Breakpoints.xs} {
         display: block;

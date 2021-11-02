@@ -1,15 +1,11 @@
 import styled from 'styled-components';
-import Image from 'next/image';
-import BannerImageFile from '../../public/img/creative_solutions.png';
 import { Breakpoints } from '../../styles/breakpoints';
+import { Orbit } from '../../components/orbit';
 
 export function Banner() {
     return (
         <Container>
-            <BannerImage
-                src="/img/creative_solutions.png"
-                alt="Funny shape"
-            />
+            <BannerImage />
             <BannerInfo>
                 <Title>
                     Soluções Criativas Para Seu Negócio
@@ -38,8 +34,8 @@ const Container = styled.div`
     }
 `;
 
-const BannerImage = styled.img`
-    width: 40%;
+const BannerImage = styled(Orbit)`
+    width: 43%;
 
     @media screen and ${Breakpoints.xs} {
         display: block;
@@ -80,11 +76,13 @@ const GetStartedLink = styled.a`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 55%;
     height: 50px;
-    border-radius: 5px;
-    background-color: ${props => props.theme.primary};
-    color: white;
-    font-weight: 700;
     margin-top: 40px;
+    background-color: #3AFF36;
+    color: white;
+    font-weight: 900;
+    box-shadow: 0px 8px 25px rgb(22 227 18 / 54%);
+    border-radius: 90px;
+    font-size: 15px;
 `;

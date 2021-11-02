@@ -7,7 +7,7 @@ const lightTheme = {
     text: '#727272',
     background: 'white',
     primary: '#E51199',
-    secondary: '#6fe784',
+    secondary: '#3AFF36',
     boxShadow: '#b7b7b799'
 };
 
@@ -16,7 +16,7 @@ const darkTheme = {
     text: '#E3E3E3',
     background: '#241D34',
     primary: '#E51199',
-    secondary: '#6fe784',
+    secondary: '#3AFF36',
     boxShadow: '#101010cf'
 };
 
