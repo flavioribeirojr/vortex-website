@@ -138,7 +138,7 @@ const TextInput = styled.input`
     height: 55px;
     background-color: white;
     border-radius: 0;
-    border: 2px solid black;
+    border: 2px solid #e1e1e1;
     padding: 0 15px;
     font-size: 16px;
     color: ${props => props.theme.strongText};
@@ -149,7 +149,7 @@ const TextArea = styled.textarea`
     width: 100%;
     background-color: white;
     border-radius: 0;
-    border: 2px solid black;
+    border: 2px solid #e1e1e1;
     padding: 15px;
     font-size: 16px;
     color: ${props => props.theme.strongText};
@@ -162,11 +162,12 @@ const SubmitButton = styled.button`
     display: block;
     margin: 0 auto;
     border: none;
-    border-radius: 5px;
-    background-color: ${props => props.theme.primary};
+    background-color: ${props => props.theme.secondary};
     color: white;
     font-size: 15px;
-    font-weight: 800;
+    font-weight: 900;
+    box-shadow: 0px 8px 25px rgb(22 227 18 / 54%);
+    border-radius: 90px;
 
     @media screen and ${Breakpoints.xs} {
         width: 100%;
