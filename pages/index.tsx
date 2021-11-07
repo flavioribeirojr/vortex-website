@@ -35,7 +35,7 @@ const Home: NextPage = () => {
 export default Home;
 
 const Container = styled.div`
-  min-height: 100vh;
+  
 
   ${props => css`
     background-color: ${props.theme.background};

@@ -7,7 +7,7 @@ import { Breakpoints } from '../../styles/breakpoints';
 
 export function Benefits() {
     return (
-        <Container>
+        <Container id="beneficios">
             <Title>
                 Vantagens
             </Title>

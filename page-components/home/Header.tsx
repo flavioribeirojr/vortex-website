@@ -26,6 +26,18 @@ export function Header() {
         themeContext.setTheme('light');
     }
 
+    function scrollSmoothlyToSection(sectionId: string) {
+        return function(event: any) {
+            event.preventDefault();
+
+            const element = document.getElementById(sectionId);
+            element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            const urlWithoutCurrentHash = `${window.location}`.replace(/#[\w]+/g, '');
+            window.history.pushState(null, '', `${urlWithoutCurrentHash}#${sectionId}`);
+        }
+    }
+
     return (
         <HeaderContainer>
             <HeaderContent
@@ -42,13 +54,22 @@ export function Header() {
                         alt="Vortex Tecnologia"
                     />
                     <NavBar>
-                        <NavLink href="#about">
+                        <NavLink
+                            href="#sobre"
+                            onClick={scrollSmoothlyToSection('sobre')}
+                        >
                             Sobre a Vortex
                         </NavLink>
-                        <NavLink href="#contact">
+                        <NavLink
+                            href="#beneficios"
+                            onClick={scrollSmoothlyToSection('beneficios')}
+                        >
                             Benefícios
                         </NavLink>
-                        <NavLink href="#contact">
+                        <NavLink
+                            href="#contato"
+                            onClick={scrollSmoothlyToSection('contato')}
+                        >
                             Contato
                         </NavLink>
                     </NavBar>

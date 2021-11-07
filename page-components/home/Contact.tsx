@@ -8,7 +8,7 @@ export function Contact() {
     const themeContext = useThemeContext();
 
     return (
-        <ContactSection>
+        <ContactSection id="contato">
             <Title>
                 Contato
             </Title>

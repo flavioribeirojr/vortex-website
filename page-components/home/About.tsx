@@ -3,7 +3,7 @@ import { Breakpoints } from '../../styles/breakpoints';
 
 export function About() {
     return (
-        <Section>
+        <Section id="sobre">
             <Title>
                 Como Funciona
             </Title>
