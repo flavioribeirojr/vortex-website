@@ -137,42 +137,12 @@ const BannerSVG = styled.svg`
     padding: 30px;
     overflow: visible;
 
-    #ring {
-        animation-name: spin;
-        animation-duration: 20s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-    }
-
     circle:not(#planet) {
         transform-origin: center;
         animation-name: orbit;
         animation-duration: 160s;
         animation-timing-function: linear;
         animation-iteration-count: infinite;
-    }
-
-    @keyframes spin {
-        0% {
-            transform: skew(0, 0);
-        }
-
-        30% {
-            transform: skew(-6deg, -9deg);
-        }
-
-        50% {
-            transform: skew(-5deg, -9deg);
-        }
-
-        70% {
-            transform: skew(-5deg, -9deg) translate(10px, 50px);
-        }
-
-        100% {
-            transform: skew(0, 0);
-        }
     }
 
     @keyframes orbit {

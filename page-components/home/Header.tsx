@@ -5,10 +5,13 @@ import { useThemeContext } from '../../pages/context/theme.context';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { Breakpoints } from '../../styles/breakpoints';
+import { ScrollDirection, useScrollWatch } from '../../hooks/useScrollWatch';
 
 export function Header() {
     const themeContext = useThemeContext();
+    const { currentScroll, scrollDirection } = useScrollWatch();
     const [ mobileSidebarVisible, setMobileSidebarVisibility ] = React.useState(false);
+    const hasScrolled = React.useMemo(() => currentScroll > 90, [currentScroll]);
 
     function toggleSidebarVisibility() {
         setMobileSidebarVisibility(!mobileSidebarVisible);
@@ -25,68 +28,108 @@ export function Header() {
 
     return (
         <HeaderContainer>
-            <LogoImage
-                src="/img/horizontal_logo.png"
-                alt="Vortex Tecnologia"
-            />
-            <HeaderRightContainer mobileVisible={mobileSidebarVisible}>
-                <HeaderSidebarLogo
+            <HeaderContent
+                isScrolled={hasScrolled}
+                isScrollingDown={scrollDirection === ScrollDirection.bottom}
+            >
+                <LogoImage
                     src="/img/horizontal_logo.png"
                     alt="Vortex Tecnologia"
                 />
-                <NavBar>
-                    <NavLink href="#about">
-                        Sobre a Vortex
-                    </NavLink>
-                    <NavLink href="#contact">
-                        Benefícios
-                    </NavLink>
-                    <NavLink href="#contact">
-                        Contato
-                    </NavLink>
-                </NavBar>
-                <ThemeSwitcher>
-                    <ThemeSwitcherLight icon={faSun} />
-                    <TheSwitcherToggle className="pretty p-switch p-fill">
-                        <input
-                            type="checkbox"
-                            checked={themeContext.theme === 'dark'}
-                            onChange={toggleTheme}
-                        />
-                        <div className="state">
-                            <label></label>
-                        </div>
-                    </TheSwitcherToggle>
-                    <ThemeSwitcherDark icon={faMoon} />
-                </ThemeSwitcher>
-                <SidebarClose onClick={toggleSidebarVisibility}>
-                    <SidebarCloseIcon icon={faTimes} />
-                </SidebarClose>
-            </HeaderRightContainer>
-            <SideBarToggler onClick={toggleSidebarVisibility}>
-                <SideBarTogglerIcon icon={faBars} />
-            </SideBarToggler>
+                <HeaderRightContainer mobileVisible={mobileSidebarVisible}>
+                    <HeaderSidebarLogo
+                        src="/img/horizontal_logo.png"
+                        alt="Vortex Tecnologia"
+                    />
+                    <NavBar>
+                        <NavLink href="#about">
+                            Sobre a Vortex
+                        </NavLink>
+                        <NavLink href="#contact">
+                            Benefícios
+                        </NavLink>
+                        <NavLink href="#contact">
+                            Contato
+                        </NavLink>
+                    </NavBar>
+                    <ThemeSwitcher>
+                        <ThemeSwitcherLight icon={faSun} />
+                        <TheSwitcherToggle className="pretty p-switch p-fill">
+                            <input
+                                type="checkbox"
+                                checked={themeContext.theme === 'dark'}
+                                onChange={toggleTheme}
+                            />
+                            <div className="state">
+                                <label></label>
+                            </div>
+                        </TheSwitcherToggle>
+                        <ThemeSwitcherDark icon={faMoon} />
+                    </ThemeSwitcher>
+                    <SidebarClose onClick={toggleSidebarVisibility}>
+                        <SidebarCloseIcon icon={faTimes} />
+                    </SidebarClose>
+                </HeaderRightContainer>
+                <SideBarToggler onClick={toggleSidebarVisibility}>
+                    <SideBarTogglerIcon icon={faBars} />
+                </SideBarToggler>
+            </HeaderContent>
         </HeaderContainer>
     );
 }
 
 const HeaderContainer = styled.header`
-    display: flex;
-    align-items: center;
     width: 100%;
-    padding: 14px 0;
-
-    ${(props: { isScrolled?: boolean }) => props.isScrolled && css`
-        position: fixed;
-        left: 0;
-        padding: 14px 100px;
-        background: ${props => props.theme.background};
-        box-shadow: 0 1px 5px ${props => props.theme.boxShadow};
-    `}
+    height: 94px;
 
     @media screen and ${Breakpoints.xs} {
         padding: 15px;
         padding-bottom: 0;
+    }
+`;
+
+const HeaderContent = styled.div`
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 94px;
+    position: relative;
+
+    ${(props: { isScrollingDown?: boolean, isScrolled?: boolean }) => props.isScrolled && css`
+        position: fixed;
+        left: 0;
+        z-index: 10;
+        padding: 14px 100px;
+        background: ${props => props.theme.background};
+        box-shadow: 0 1px 5px ${props => props.theme.boxShadow};
+
+        @media screen and ${Breakpoints.xs} {
+            padding: 0 15px;
+        }
+    `}
+
+    ${(props: { isScrollingDown?: boolean, isScrolled?: boolean }) => props.isScrollingDown && css`
+        animation: fadeOut .3s linear 0s 1 normal forwards;
+    `}
+
+    ${(props: { isScrollingDown?: boolean, isScrolled?: boolean }) => !props.isScrollingDown && css`
+        animation: fadeIn .3s linear 0s 1 normal forwards;
+    `}
+
+    @keyframes fadeIn {
+        from {
+            top: -300px;
+        } to {
+            top: 0;
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            top: 0;
+        } to {
+            top: -300px;
+        }
     }
 `;
 
@@ -184,7 +227,7 @@ const ThemeSwitcherDark = styled(FontAwesomeIcon)`
 `;
 
 const TheSwitcherToggle = styled.div`
-    font-size: 17px;
+    font-size: 16px;
 
     &.pretty.p-switch .state label:after, .pretty.p-switch .state label:before {
         left: 2px;

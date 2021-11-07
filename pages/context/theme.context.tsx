@@ -8,7 +8,7 @@ const lightTheme = {
     background: 'white',
     primary: '#E51199',
     secondary: '#3AFF36',
-    boxShadow: '#b7b7b799'
+    boxShadow: '#c9c9c94f'
 };
 
 const darkTheme = {

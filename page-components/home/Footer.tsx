@@ -1,6 +1,7 @@
 import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
+import { Breakpoints } from '../../styles/breakpoints';
 
 export function Footer() {
     return (
@@ -45,6 +46,10 @@ const Wrapper = styled.footer`
     background-repeat: no-repeat;
     display: flex;
     margin-top: 100px;
+
+    @media screen and ${Breakpoints.xs} {
+        margin-top: 35px;
+    }
 `;
 
 const CompanyInfo = styled.address`

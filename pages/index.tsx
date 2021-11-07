@@ -17,15 +17,17 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <Header />
-        <main>
-          <Banner />
-          <About />
-          <Benefits />
-          <Contact />
-        </main>
+        <Content>
+          <Header />
+          <main>
+            <Banner />
+            <About />
+            <Benefits />
+            <Contact />
+          </main>
+        </Content>
+        <Footer />
       </Container>
-      <Footer />
     </>
   );
 }
@@ -33,12 +35,16 @@ const Home: NextPage = () => {
 export default Home;
 
 const Container = styled.div`
-  padding: 0 100px;
   min-height: 100vh;
+
   ${props => css`
     background-color: ${props.theme.background};
     transition: background-color .3s linear;
   `};
+`;
+
+const Content = styled.div`
+  padding: 0 100px;
 
   @media(max-width: 940px) {
     padding: 0;
