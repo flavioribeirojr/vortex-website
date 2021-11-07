@@ -8,7 +8,9 @@ const lightTheme = {
     background: 'white',
     primary: '#E51199',
     secondary: '#3AFF36',
-    boxShadow: '#c9c9c94f'
+    boxShadow: '#c9c9c94f',
+    inputBackground: 'white',
+    inputBorderColor: '#e1e1e1'
 };
 
 const darkTheme = {
@@ -17,10 +19,12 @@ const darkTheme = {
     background: '#241D34',
     primary: '#E51199',
     secondary: '#3AFF36',
-    boxShadow: '#101010cf'
+    boxShadow: '#101010cf',
+    inputBackground: '#2B2B2B',
+    inputBorderColor: '#282828'
 };
 
-const ThemeContext = React.createContext<ThemeState>({
+export const ThemeContext = React.createContext<ThemeState>({
     theme: 'light',
     setTheme: () => {}
 });

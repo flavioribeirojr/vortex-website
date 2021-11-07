@@ -1,5 +1,6 @@
 import type { AppContext, AppProps } from 'next/app';
 import { ThemeProvider, ThemeState } from './context/theme.context';
+import { Toaster } from 'react-hot-toast';
 import Cookies from 'cookies';
 import '../styles/globals.css';
 
@@ -7,6 +8,7 @@ function MyApp({ Component, pageProps, initialTheme }: MyAppProps) {
   return (
     <ThemeProvider initialTheme={initialTheme}>
       <Component {...pageProps} />
+      <Toaster />
     </ThemeProvider>
   );
 }
