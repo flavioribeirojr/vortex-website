@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 import { Breakpoints } from '../../styles/breakpoints';
-import { Orbit } from '../../components/orbit';
+import { Orbit } from '../../components/Orbit';
+import { useAnchorLink } from '../../hooks/useAnchorLink';
 
 export function Banner() {
+    const anchorLink = useAnchorLink();
+
     return (
         <Container>
             <BannerImage />
@@ -13,7 +16,10 @@ export function Banner() {
                 <Description>
                     Impulsione seu negócio usando as melhores soluções do mercado.
                 </Description>
-                <GetStartedLink>
+                <GetStartedLink
+                    href="#sobre"
+                    onClick={anchorLink('sobre')}
+                >
                     SAIBA MAIS
                 </GetStartedLink>
             </BannerInfo>

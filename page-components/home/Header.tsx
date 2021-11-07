@@ -6,12 +6,14 @@ import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { Breakpoints } from '../../styles/breakpoints';
 import { ScrollDirection, useScrollWatch } from '../../hooks/useScrollWatch';
+import { useAnchorLink } from '../../hooks/useAnchorLink';
 
 export function Header() {
     const themeContext = useThemeContext();
     const { currentScroll, scrollDirection } = useScrollWatch();
     const [ mobileSidebarVisible, setMobileSidebarVisibility ] = React.useState(false);
     const hasScrolled = React.useMemo(() => currentScroll > 90, [currentScroll]);
+    const anchorHandler = useAnchorLink();
 
     function toggleSidebarVisibility() {
         setMobileSidebarVisibility(!mobileSidebarVisible);
@@ -24,18 +26,6 @@ export function Header() {
         }
 
         themeContext.setTheme('light');
-    }
-
-    function scrollSmoothlyToSection(sectionId: string) {
-        return function(event: any) {
-            event.preventDefault();
-
-            const element = document.getElementById(sectionId);
-            element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-            const urlWithoutCurrentHash = `${window.location}`.replace(/#[\w]+/g, '');
-            window.history.pushState(null, '', `${urlWithoutCurrentHash}#${sectionId}`);
-        }
     }
 
     return (
@@ -56,19 +46,19 @@ export function Header() {
                     <NavBar>
                         <NavLink
                             href="#sobre"
-                            onClick={scrollSmoothlyToSection('sobre')}
+                            onClick={anchorHandler('sobre')}
                         >
                             Sobre a Vortex
                         </NavLink>
                         <NavLink
                             href="#beneficios"
-                            onClick={scrollSmoothlyToSection('beneficios')}
+                            onClick={anchorHandler('beneficios')}
                         >
                             Benefícios
                         </NavLink>
                         <NavLink
                             href="#contato"
-                            onClick={scrollSmoothlyToSection('contato')}
+                            onClick={anchorHandler('contato')}
                         >
                             Contato
                         </NavLink>

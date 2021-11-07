@@ -1,7 +1,10 @@
 import styled, { css } from 'styled-components';
+import { useAnchorLink } from '../../hooks/useAnchorLink';
 import { Breakpoints } from '../../styles/breakpoints';
 
 export function About() {
+    const anchorLink = useAnchorLink();
+
     return (
         <Section id="sobre">
             <Title>
@@ -52,7 +55,10 @@ export function About() {
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus natus provident iure. Magni voluptate, eveniet tempora in rerum culpa omnis optio tempore a assumenda officia illum obcaecati aliquid mollitia tenetur!
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Velit error ratione sit laboriosam ad magnam accusamus laudantium iste debitis deleniti. Dicta est explicabo in eum quaerat saepe sunt repellat officiis.
                     </AboutItemInfoDescription>
-                    <AboutItemInfoContactLink href="#contact">
+                    <AboutItemInfoContactLink
+                        href="#contato"
+                        onClick={anchorLink('contato')}
+                    >
                         ENTRE EM CONTATO
                     </AboutItemInfoContactLink>
                 </AboutItemInfo>
